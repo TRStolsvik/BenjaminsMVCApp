@@ -1,4 +1,4 @@
-namespace DotNET6_MVC_CodingChallengeTemplate.Models
+namespace BenjaminsMVC.Models
 {
     public class ErrorViewModel
     {

@@ -1,8 +1,8 @@
-﻿using DotNET6_MVC_CodingChallengeTemplate.Models;
+﻿using BenjaminsMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace DotNET6_MVC_CodingChallengeTemplate.Controllers
+namespace BenjaminsMVC.Controllers
 {
     public class HomeController : Controller
     {
