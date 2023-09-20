@@ -1,7 +1,7 @@
 ﻿<main class="flex-shrink-0">
     <div class="container">
         <h2 class="border-1 border-bottom border-dark">
-            The Code for Benjamins MVC is structured in 3 (5) functions.
+            The Code for Benjamins MVC is structured in 3 (5) functions (methods of a class), the last two inclusions are the view and the model.
         </h2>
         <div id="accordionItemOne" class="accordion mt-2">
             <div class="accordion-item bg-secondary-subtle">
@@ -11,7 +11,7 @@
                             data-bs-target="#accordionPanelOne"
                             aria-expanded="true"
                             aria-controls="accordionPanelOne"
-                            class="accordion-button bg-dark text-light">
+                            class="accordion-button bg-success text-light">
                         GetValues()
                     </button>
                 </h3>
@@ -20,16 +20,14 @@
                     <div class="accordion-body">
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
-                                <pre data-start="1"><code class="language-javascript">
+                                <pre data-start="1"><code class="language-dotnet">
                                     public static string GetValues(Benjamins benjamins)
                                     {
                                         string result = "";
 
-                                        // Get the values from the model
                                         string sValue = benjamins.StartValue;
                                         string eValue = benjamins.EndValue;
 
-                                        // Parse the values to int
                                         int startValue = int.Parse(sValue);
                                         int endValue = int.Parse(eValue);
 
@@ -42,8 +40,22 @@
                             <div class="col col-md-4">
                                 <h5>GetValues()</h5>
                                 <p>
-                                    Hello World is a function that displays an alert with a
-                                    message of "Hello World!"
+                                    The function GetValues() takes in an object of type Benjamins, which we've named after the application, and returns a string in the end.
+                                </p>
+                                <p>
+                                    We start by declaring an empty string we call result.
+                                </p>
+                                <p>
+                                    Next we get the values from StartValue and EndValue, both contained in our object, and store them in new variables for further use.
+                                </p>
+                                <p>
+                                    We then parse both these values to integers, since we're taking in strings to start. This is important because we want to do a little mathematical number on the array at a later point.
+                                </p>
+                                <p>
+                                    As a note on arrays, we actually elect to store our numbers in a list for this exercise. The list is returned by the GenerateNumbers() function, which has passed in the startValue and endValue which we parsed to integers before. Check the next function for that functionality.
+                                </p>
+                                <p>
+                                    Finally for this function, we return the result which we get from the DisplayNumbers() function, which has passed in our list of numbers.
                                 </p>
                             </div>
                         </div>
@@ -59,7 +71,7 @@
                             data-bs-target="#accordionPanelTwo"
                             aria-expanded="true"
                             aria-controls="accordionPanelTwo"
-                            class="accordion-button bg-dark text-light">
+                            class="accordion-button bg-success text-light">
                         GenerateNumbers()
                     </button>
                 </h3>
@@ -67,7 +79,7 @@
                     <div class="accordion-body">
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
-                                <pre data-start="5"><code class="language-javascript">
+                                <pre data-start="5"><code class="language-dotnet">
                                     public static List&lt;int> GenerateNumbers(int sValue, int eValue)
                                     {
                                         List&lt;int> output = new List&lt;int>();
@@ -84,8 +96,16 @@
                             <div class="col col-md-4">
                                 <h5>GenerateNumbers()</h5>
                                 <p>
-                                    Hello World is a function that displays an alert with a
-                                    message of "Hello World!"
+                                    The function GenerateNumbers() takes in two integers and returns a list of integers.
+                                </p>
+                                <p>
+                                    We start by instantiating a new list of type integer, called output.
+                                </p>
+                                <p>
+                                    Next up, we do a for-loop starting at the sValue (aka. start value), and increment it by 1 for every iteration for as long as i is less than or equal to eValue (aka. end value). Inside the loop, we simply add the number we're looping through to the list called output.
+                                </p>
+                                <p>
+                                    Finally, we return output.
                                 </p>
                             </div>
                         </div>
@@ -101,7 +121,7 @@
                             data-bs-target="#accordionPanelThree"
                             aria-expanded="true"
                             aria-controls="accordionPanelThree"
-                            class="accordion-button bg-dark text-light">
+                            class="accordion-button bg-success text-light">
                         DisplayNumbers()
                     </button>
                 </h3>
@@ -110,7 +130,7 @@
                     <div class="accordion-body">
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
-                                <pre data-start="1"><code class="language-javascript">
+                                <pre data-start="1"><code class="language-dotnet">
                                     public static string DisplayNumbers(List&lt;int> numbers)
                                     {
                                         string templateRows = "";
@@ -136,10 +156,27 @@
                                 </code></pre>
                             </div>
                             <div class="col col-md-4">
-                                <h5>HelloWorld()</h5>
+                                <h5>DisplayNumbers()</h5>
                                 <p>
-                                    Hello World is a function that displays an alert with a
-                                    message of "Hello World!"
+                                    The function DisplayNumbers() takes in the list of integers we returned from the previous function, GenerateNumbers(). In the end it will return a string for display on the page.
+                                </p>
+                                <p>
+                                    We start by declaring a couple of empty strings for use later, templateRows and className.
+                                </p>
+                                <p>
+                                    Next we do a for-loop going from 0 and iterate 1 number at a time, for as long as i is less than the length (count) of the list of numbers. <strong>Note</strong> that we don't use anything like the start or end values here, as this is a list we're iterating through, and not the user inputs themselves.
+                                </p>
+                                <p>
+                                    Inside the for-loop we declare an integer with the name number and assign to it the number that is stored in the current index [i] of the numbers list.
+                                </p>
+                                <p>
+                                    If that number modulus (%) 2 == 0, that is to say, if you divide it by two and have no remainder, we add "even" to the className variable. Else we assign "odd" to that same variable.
+                                </p>
+                                <p>
+                                    Finally for the loop itself, we append (+=) a string containing a table row and table cell (tr & td respectively) which also has the current className and number contained within. When we append this way, we will have a very long string, but we solve that at a later point.
+                                </p>
+                                <p>
+                                    Finally, we return templateRows.
                                 </p>
                             </div>
                         </div>
@@ -155,7 +192,7 @@
                             data-bs-target="#accordionPanelFour"
                             aria-expanded="true"
                             aria-controls="accordionPanelFour"
-                            class="accordion-button bg-dark text-light">
+                            class="accordion-button bg-success text-light">
                         App() // HttpGet
                     </button>
                 </h3>
@@ -164,7 +201,7 @@
                     <div class="accordion-body">
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
-                                <pre data-start="1"><code class="language-javascript">
+                                <pre data-start="1"><code class="language-dotnet">
                                     [HttpGet]
                                     public IActionResult App()
                                     {
@@ -177,8 +214,7 @@
                             <div class="col col-md-4">
                                 <h5>App() // GET</h5>
                                 <p>
-                                    Hello World is a function that displays an alert with a
-                                    message of "Hello World!"
+                                    The "get" action of the App() method of the controller instantiates a new object of of type Benjamins (based on our model) and returns it to the view for us to use.
                                 </p>
                             </div>
                         </div>
@@ -194,7 +230,7 @@
                             data-bs-target="#accordionPanelFive"
                             aria-expanded="true"
                             aria-controls="accordionPanelFive"
-                            class="accordion-button bg-dark text-light">
+                            class="accordion-button bg-success text-light">
                         App() // HttpPost
                     </button>
                 </h3>
@@ -203,7 +239,7 @@
                     <div class="accordion-body">
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
-                                <pre data-start="1"><code class="language-javascript">
+                                <pre data-start="1"><code class="language-dotnet">
                                     [HttpPost]
                                     [ValidateAntiForgeryToken]
                                     public IActionResult App(Benjamins benjamins)
@@ -217,9 +253,132 @@
                             <div class="col col-md-4">
                                 <h5>App() // POST</h5>
                                 <p>
-                                    Hello World is a function that displays an alert with a
-                                    message of "Hello World!"
+                                    The "post" action of the App() method of the controller takes in the benjamins object we returned to the view in the "get" action.
                                 </p>
+                                <p>
+                                    We fire off the GetValues() function in the "Counter" class, and takes in the benjamins object. We use the result (which we've gone through in the above functions/methods) and store it in the Result of the benjamins object.
+                                </p>
+                                <p>
+                                    Finally we return the entire benjamins object (now with an altered Result) to the view.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="accordionItemSix" class="accordion mt-2">
+            <div class="accordion-item bg-secondary-subtle">
+                <h3 class="accordion-header">
+                    <button type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#accordionPanelSix"
+                            aria-expanded="true"
+                            aria-controls="accordionPanelSix"
+                            class="accordion-button bg-success text-light">
+                        App view
+                    </button>
+                </h3>
+                <div id="accordionPanelSix"
+                     class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col col-md-8">
+                                <pre data-start="1"><code class="language-dotnet">
+                                    &lt;form asp-controller="Home" asp-action="App" method="post" class="row gy-2">
+                                        &lt;div class="col-12 col-md-6">
+                                            &lt;label asp-for="StartValue"
+                                                class="form-label">Start value:&lt;/label>
+                                            &lt;input asp-for="StartValue"
+                                                type="number"
+                                                value="@@Model.StartValue"
+                                                aria-label="Start value"
+                                                class="form-control" />
+                                        &lt;/div>
+                                        &lt;div class="col-12 col-md-6">
+                                            &lt;label asp-for="EndValue"
+                                                class="form-label">End value:&lt;/label>
+                                            &lt;input asp-for="EndValue"
+                                                type="number"
+                                                value="@@Model.EndValue"
+                                                aria-label="End value"
+                                                class="form-control" />
+                                        &lt;/div>
+                                        &lt;div class="col-12 text-end">
+                                            &lt;button id="csSubmit"
+                                                type="submit"
+                                                class="btn btn-success btn-lg">Count 'em
+                                            &lt;/button>
+                                        &lt;/div>
+                                    &lt;/form>
+                                    &lt;h6 class="h2 mt-5 border-bottom border-black">Results&lt;/h6>
+                                    &lt;div class="table-responsive">
+                                        &lt;table class="table table-striped table-sm">
+                                            &lt;tbody id="csResults">@@Html.Raw(Model.Result)&lt;/tbody>
+                                        &lt;/table>
+                                    &lt;/div>
+                                </code></pre>
+                            </div>
+                            <div class="col col-md-4">
+                                <h5>App view</h5>
+                                <p>
+                                    The App view contains the form where the code is retrieved and posted back.
+                                </p>
+                                <p>
+                                    The form has a post method which utilizes the App post method described before.
+                                </p>
+                                <p>
+                                    Razor syntax, which utilizes the "@@" symbol to write C# code in the HTML is how we've targeted the various elements or spots we want to use from the page and post back to it.
+                                </p>
+                                <p>
+                                    For the StartValue and EndValue which are the user inputs, we use @@Model.Start/EndValue in the "value=" for the tag to capture the value that's entered.
+                                </p>
+                                <p>
+                                    To post the results back to the page we use @@Html.Raw(Model.Result) inside the table body. This will allow us to set the Result of the object, and this will serve as the insertion point.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="accordionItemSeven" class="accordion mt-2">
+                    <div class="accordion-item bg-secondary-subtle">
+                        <h3 class="accordion-header">
+                            <button type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#accordionPanelSeven"
+                                    aria-expanded="true"
+                                    aria-controls="accordionPanelSeven"
+                                    class="accordion-button bg-success text-light">
+                                The Benjamins Model
+                            </button>
+                        </h3>
+                        <div id="accordionPanelSeven"
+                             class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="row row-cols-1 row-cols-md-2">
+                                    <div class="col col-md-8">
+                                        <pre data-start="1"><code class="language-dotnet">
+                                            public class Benjamins
+                                            {
+                                                public string StartValue { get; set; } = "0";
+                                                public string EndValue { get; set; } = "100";
+                                                public string Result { get; set; }
+                                            }
+                                        </code></pre>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <h5>The Benjamins Model</h5>
+                                        <p>
+                                            This is the model used for the data.
+                                        </p>
+                                        <p>
+                                            We take in two strings, StartValue and EndValue. To ensure that the application will work even without the user selecting specific inputs, we set them to "0" and "100" respectively. We use strings, since the inputs will be strings anyway.
+                                        </p>
+                                        <p>
+                                            The Result string we utilize when we post the results back to the page.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

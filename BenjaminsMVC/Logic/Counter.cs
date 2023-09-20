@@ -8,11 +8,9 @@ namespace BenjaminsMVC.Logic
         {
             string result = "";
 
-            // Get the values from the model
             string sValue = benjamins.StartValue;
             string eValue = benjamins.EndValue;
 
-            // Parse the values to int
             int startValue = int.Parse(sValue);
             int endValue = int.Parse(eValue);
 
