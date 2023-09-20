@@ -1,4 +1,5 @@
-﻿using BenjaminsMVC.Models;
+﻿using BenjaminsMVC.Logic;
+using BenjaminsMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -18,15 +19,28 @@ namespace BenjaminsMVC.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult App()
         {
-            return View();
+            Benjamins model = new();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult App(Benjamins benjamins)
+        {
+            benjamins.Result = Counter.GetValues(benjamins);
+
+            return View(benjamins);
         }
 
         public IActionResult Code()
         {
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

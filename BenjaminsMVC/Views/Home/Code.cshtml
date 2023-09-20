@@ -1,7 +1,7 @@
 ﻿<main class="flex-shrink-0">
     <div class="container">
         <h2 class="border-1 border-bottom border-dark">
-            The Code for Benjamins MVC is structured in XX functions.
+            The Code for Benjamins MVC is structured in 3 (5) functions.
         </h2>
         <div id="accordionItemOne" class="accordion mt-2">
             <div class="accordion-item bg-secondary-subtle">
@@ -12,7 +12,7 @@
                             aria-expanded="true"
                             aria-controls="accordionPanelOne"
                             class="accordion-button bg-dark text-light">
-                        Function Name #1
+                        GetValues()
                     </button>
                 </h3>
                 <div id="accordionPanelOne"
@@ -21,14 +21,26 @@
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
                                 <pre data-start="1"><code class="language-javascript">
-                            // Call Hello World!
-                            function HelloWorld() {
-                                alert('Hello World!');
-                            }                                            
-                        </code></pre>
+                                    public static string GetValues(Benjamins benjamins)
+                                    {
+                                        string result = "";
+
+                                        // Get the values from the model
+                                        string sValue = benjamins.StartValue;
+                                        string eValue = benjamins.EndValue;
+
+                                        // Parse the values to int
+                                        int startValue = int.Parse(sValue);
+                                        int endValue = int.Parse(eValue);
+
+                                        List&lt;int> numbers = GenerateNumbers(startValue, endValue);
+
+                                        return result = DisplayNumbers(numbers);
+                                    }
+                                </code></pre>
                             </div>
                             <div class="col col-md-4">
-                                <h5>HelloWorld()</h5>
+                                <h5>GetValues()</h5>
                                 <p>
                                     Hello World is a function that displays an alert with a
                                     message of "Hello World!"
@@ -48,7 +60,7 @@
                             aria-expanded="true"
                             aria-controls="accordionPanelTwo"
                             class="accordion-button bg-dark text-light">
-                        Function Name #2
+                        GenerateNumbers()
                     </button>
                 </h3>
                 <div id="accordionPanelTwo" class="accordion-collapse collapse">
@@ -56,14 +68,154 @@
                         <div class="row row-cols-1 row-cols-md-2">
                             <div class="col col-md-8">
                                 <pre data-start="5"><code class="language-javascript">
-                            // Call Hello World!
-                            function HelloWorld() {
-                                alert('Hello World!');
-                            }                                            
-                        </code></pre>
+                                    public static List&lt;int> GenerateNumbers(int sValue, int eValue)
+                                    {
+                                        List&lt;int> output = new List&lt;int>();
+
+                                        for (int i = sValue; i <= eValue; i++)
+                                        {
+                                            output.Add(i);
+                                        }
+
+                                        return output;
+                                    }
+                                </code></pre>
+                            </div>
+                            <div class="col col-md-4">
+                                <h5>GenerateNumbers()</h5>
+                                <p>
+                                    Hello World is a function that displays an alert with a
+                                    message of "Hello World!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="accordionItemThree" class="accordion mt-2">
+            <div class="accordion-item bg-secondary-subtle">
+                <h3 class="accordion-header">
+                    <button type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#accordionPanelThree"
+                            aria-expanded="true"
+                            aria-controls="accordionPanelThree"
+                            class="accordion-button bg-dark text-light">
+                        DisplayNumbers()
+                    </button>
+                </h3>
+                <div id="accordionPanelThree"
+                     class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col col-md-8">
+                                <pre data-start="1"><code class="language-javascript">
+                                    public static string DisplayNumbers(List&lt;int> numbers)
+                                    {
+                                        string templateRows = "";
+                                        string className = "";
+
+                                        for (int i = 0; i < numbers.Count; i++)
+                                        {
+                                            int number = numbers[i];
+
+                                            if (number % 2 == 0)
+                                            {
+                                                className = "even";
+                                            }
+                                            else
+                                            {
+                                                className = "odd";
+                                            }
+                                            templateRows += $"&lt;tr>&lt;td class='{className}'>{number}&lt;/td>&lt;/tr>";
+                                        }
+
+                                        return templateRows;
+                                    }
+                                </code></pre>
                             </div>
                             <div class="col col-md-4">
                                 <h5>HelloWorld()</h5>
+                                <p>
+                                    Hello World is a function that displays an alert with a
+                                    message of "Hello World!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="accordionItemFour" class="accordion mt-2">
+            <div class="accordion-item bg-secondary-subtle">
+                <h3 class="accordion-header">
+                    <button type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#accordionPanelFour"
+                            aria-expanded="true"
+                            aria-controls="accordionPanelFour"
+                            class="accordion-button bg-dark text-light">
+                        App() // HttpGet
+                    </button>
+                </h3>
+                <div id="accordionPanelFour"
+                     class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col col-md-8">
+                                <pre data-start="1"><code class="language-javascript">
+                                    [HttpGet]
+                                    public IActionResult App()
+                                    {
+                                        Benjamins model = new();
+
+                                        return View(model);
+                                    }
+                                </code></pre>
+                            </div>
+                            <div class="col col-md-4">
+                                <h5>App() // GET</h5>
+                                <p>
+                                    Hello World is a function that displays an alert with a
+                                    message of "Hello World!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="accordionItemFive" class="accordion mt-2">
+            <div class="accordion-item bg-secondary-subtle">
+                <h3 class="accordion-header">
+                    <button type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#accordionPanelFive"
+                            aria-expanded="true"
+                            aria-controls="accordionPanelFive"
+                            class="accordion-button bg-dark text-light">
+                        App() // HttpPost
+                    </button>
+                </h3>
+                <div id="accordionPanelFive"
+                     class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col col-md-8">
+                                <pre data-start="1"><code class="language-javascript">
+                                    [HttpPost]
+                                    [ValidateAntiForgeryToken]
+                                    public IActionResult App(Benjamins benjamins)
+                                    {
+                                        benjamins.Result = Counter.GetValues(benjamins);
+
+                                        return View(benjamins);
+                                    }
+                                </code></pre>
+                            </div>
+                            <div class="col col-md-4">
+                                <h5>App() // POST</h5>
                                 <p>
                                     Hello World is a function that displays an alert with a
                                     message of "Hello World!"
